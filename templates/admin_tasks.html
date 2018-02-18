@@ -1,0 +1,57 @@
+{% extends 'admin_base.html' %}
+{% block title %}Список заданий{% endblock %}
+{% block caption %}Список заданий{% endblock %}
+{% block content %}
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Код</th>
+            <th>Наименование</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for code in codes %}
+        <tr>
+            <td><a href="{{ url_for('admin.admin_task', code=code) }}">{{ code }}</a></td>
+            <td>{{ tasks[code].name }}</td>
+            <td>
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#removeModal" data-code="{{ code }}"><span class="glyphicon glyphicon-remove"></span></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-primary" href="{{ url_for('admin.admin_task') }}">Добавить задание</a>
+<div class="modal" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="removeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>
+                <h4 class="modal-title">Подтвердите действие</h4>
+            </div>
+            <div class="modal-body">
+                <p>Вы действительно хотите удалить задание?</p>
+            </div>
+            <div class="modal-footer">
+                <form role="form" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="code" id="code">
+                    <input type="submit" class="btn btn-danger" value="Да">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Нет</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    $('#removeModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var code = button.data('code');
+        var modal = $(this);
+        modal.find('#code').attr('value', code);
+    })
+</script>
+{% endblock %}

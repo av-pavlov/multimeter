@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ settings['title'] }}{% endblock %}</title>
+    <link href="{{ url_for('static', filename='favicon.ico') }}" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body style="padding-top: 50px;">
+    {% block body %}
+    <div class="container" style="width: 940px !important;">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{% block caption %}{{ settings['title'] }}{% endblock %}</h1>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

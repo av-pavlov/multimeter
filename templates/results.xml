@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Title>Итоги олимпиады школьников по информатике</Title>
+  <Author>Жюри олимпиады школьников по информатике</Author>
+  <LastAuthor>Self</LastAuthor>
+  <Created>2012-03-15T23:04:04Z</Created>
+  <Version>14.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>6795</WindowHeight>
+  <WindowWidth>8460</WindowWidth>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>15</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:CharSet="204" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Arial" x:CharSet="204" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:CharSet="204" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:CharSet="204" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s69">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:CharSet="204" x:Family="Swiss" ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:Index="1" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="2" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="3" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="4" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="5" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="6" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="7" ss:AutoFitWidth="1" ss:Width="100"/>
+   <Column ss:Index="8" ss:StyleID="s75" ss:AutoFitWidth="1"/>
+   <Row ss:AutoFitHeight="0" ss:Height="40">
+    <Cell ss:MergeAcross="10" ss:StyleID="s63"><Data ss:Type="String">ИТОГИ&#10;Всероссийская олимпиада школьников по информатике&#10;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="18" ss:StyleID="s65">
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Фамилия</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Имя</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Отчество</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Дата рождения</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Школа</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Класс</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Учитель</Data></Cell>
+    {% for task in tasks.keys() %}
+      <Cell ss:StyleID="s66"><Data ss:Type="String">{{ task }}</Data></Cell>
+    {% endfor %}
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Итог</Data></Cell>
+   </Row>
+    {% for row in ratings %}
+    <Row>
+     <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].last_name }}</Data></Cell>
+     <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].first_name }}</Data></Cell>
+     <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].second_name }}</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].birthday }}</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].school }}</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].class }}</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">{{ results[row.user].teacher }}</Data></Cell>
+    {% for task in tasks.keys() %}
+      <Cell ss:StyleID="s68"><Data ss:Type="Number">{{ results[row.user][task] }}</Data></Cell>
+    {% endfor %}
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">{{ row.total }}</Data></Cell>
+   </Row>
+   {% endfor %}
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <RangeSelection>R1C1:R1C5</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+   <x:Table>       </x:Table>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

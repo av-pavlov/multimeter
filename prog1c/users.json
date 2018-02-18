@@ -1,0 +1,54 @@
+{
+"test":
+	{"password":"1"},
+"adamov":	
+	{"password": "7Dfg2", "variant": "1", "last_name": "Адамов", "first_name": "Никита", "second_name": "Вадимович", "repo": "https://bitbucket.org/jemosta/prog1js",	"c9": "https://ide.c9.io/jemosta/js-cloned",	"email":	"jemosta10@gmail.com"},
+"ammosov":	
+	{"password": "TSjMv", "variant": "2", "last_name": "Аммосов", "first_name": "Арсен", "second_name": "Иванович", "repo": "https://bitbucket.org/Welpmyass/prog1js",	"c9": "https://ide.c9.io/minthourwnz/js-cloned",	"email":	"minthourwnz@gmail.com"},
+"vasiliev":	
+	{"password": "snkLY", "variant": "3", "last_name": "Васильев", "first_name": "Айтал", "second_name": "Айсенович", "repo": "https://bitbucket.org/AitalVasiliev/",	"c9": "https://ide.c9.io/ayayvasiliev/js1-cloned",	"email":	"clavicusvileferal@gmail.com"},
+"vasilieva":	
+	{"password": "jVLds", "variant": "4", "last_name": "Васильева", "first_name": "Камила", "second_name": "Михайловна", "repo": "https://bitbucket.org/vasilevak/prog1js",	"c9": "https://ide.c9.io/kamilavasileva/js1-cloned",	"email":	"vasileva99kam@gmail.com"},
+"veremeenko":	
+	{"password": "ukaJc", "variant": "5", "last_name": "Веремеенко", "first_name": "Максим", "second_name": "Игоревич", "repo": "https://bitbucket.org/maqsonn/",	"c9": "https://ide.c9.io/veremeenko13/js1-cloned",	"email":	"veremeenko1999@gmail.com"},
+"vu":	
+	{"password": "u8e22", "variant": "6", "last_name": "Ву", "first_name": "Ба", "second_name": "Шанг", "repo": "https://bitbucket.org/sangvuba/",	"c9": "https://ide.c9.io/sangvu/js1-cloned",	"email":	"bacbabachanh@gmail.com"},
+"gerasimov":	
+	{"password": "QgR5e", "variant": "7", "last_name": "Герасимов", "first_name": "Кирилл", "second_name": "Леонидович", "repo": "https://bitbucket.org/kiri67/",	"c9": "https://ide.c9.io/kirill1/js1-cloned-cloned-cloned",	"email":	"gerasimow224@gmail.com"},
+"danilov":	
+	{"password": "tnTFZ", "variant": "8", "last_name": "Данилов", "first_name": "Степан", "second_name": "Максимович", "repo": "https://bitbucket.org/danilovstepan/",	"c9": "https://ide.c9.io/aytal/js1-cloned",	"email":	"5digitnoob@gmail.com"},
+"egorov":	
+	{"password": "VRaBc", "variant": "9", "last_name": "Егоров", "first_name": "Айтал", "second_name": "Александрович", "repo": "https://bitbucket.org/aytal/",	"c9": "https://ide.c9.io/aytal/js1-cloned",	"email":	"kitecat.kitekat@gmail.com"},
+"efimov":	
+	{"password": "QxpKP", "variant": "10", "last_name": "Ефимов", "first_name": "Артем", "second_name": "Витальевич", "repo": "https://bitbucket.org/Artemqwerty123/prog1js",	"c9": "https://ide.c9.io/artemefimov/js1-cloned",	"email":	"artemefimov1999@mail.com"},
+"zakharov":	
+	{"password": "hUjzx", "variant": "11", "last_name": "Захаров", "first_name": "Юрий", "second_name": "Юрьевич", "repo": "https://bitbucket.org/ZakharovYura/prog1js",	"c9": "https://ide.c9.io/speedhunter753/js1-cloned",	"email":	"speedhunter753@gmail.com"},
+"kononov":	
+	{"password": "9Ybz7", "variant": "12", "last_name": "Кононов", "first_name": "Виктор", "second_name": "Геннадьевич", "repo": "https://bitbucket.org/kovit97/prog1js",	"c9": "https://ide.c9.io/kovit/js1-cloned",	"email":	"kovit97@gmail.com"},
+"kychkin":	
+	{"password": "HCLuv", "variant": "13", "last_name": "Кычкин", "first_name": "Алексей", "second_name": "Иванович", "repo": "https://bitbucket.org/Aleks1999/prog1js",	"c9": "https://ide.c9.io/archangel1999/js1-cloned-cloned",	"email":	"akychkin15@gmail.com"},
+"lehanova":	
+	{"password": "qJCjt", "variant": "14", "last_name": "Леханова", "first_name": "Елена", "second_name": "Константиновна", "repo": "https://bitbucket.org/lehanek/prog1js",	"c9": "https://ide.c9.io/lehanek/js1-cloned",	"email":	"yka984@gmail.com"},
+"lvov":	
+	{"password": "M5cyL", "variant": "15", "last_name": "Львов", "first_name": "Михаил", "second_name": "Ильич", "repo": "https://bitbucket.org/xaata/prog1js",	"c9": "https://ide.c9.io/xaata/js1-cloned",	"email":	"xaata2010@gmail.com"},
+"mondoev":	
+	{"password": "LFrCE", "variant": "16", "last_name": "Мондоев", "first_name": "Уолан", "second_name": "Дмитриевич", "repo": "https://bitbucket.org/uolanmondoev/prog1js",	"c9": "https://ide.c9.io/uolanmondoev/kvadratnoe_uravnenie",	"email":	"uolanmondoev@gmail.com"},
+"nikolaev":	
+	{"password": "wLhAG", "variant": "17", "last_name": "Николаев", "first_name": "Виктор", "second_name": "Сергеевич", "repo": "",	"c9": "https://ide.c9.io/nyancoder/nyancoder_l02if",	"email":	"vityaniko@gmail.com"},
+"okoneshnikova":	
+	{"password": "FQLZX", "variant": "18", "last_name": "Оконешникова", "first_name": "Диана", "second_name": "Михайловна", "repo": "https://bitbucket.org/dufg/prog1js",	"c9": "https://ide.c9.io/dsjfrbse/js1-cloned12-cl-cl-c-cl-cl",	"email":	"dianaasdqwezxc@gmail.com"},
+"petrov":	
+	{"password": "tLdH3", "variant": "19", "last_name": "Петров", "first_name": "Тимур", "second_name": "Павлович", "repo": "https://bitbucket.org/Blok_ada/prog1js",	"c9": "",	"email":	"tp110264@gmail.com"},
+"popova":	
+	{"password": "wUYJx", "variant": "20", "last_name": "Попова", "first_name": "Катерина", "second_name": "Гаврильевна", "repo": "https://bitbucket.org/popovakaterina/prog1js",	"c9": "https://ide.c9.io/popovakaterina/js1-cloned",	"email":	"popovakatya00@gmail.com"},
+"saparov":	
+	{"password": "pe26V", "variant": "21", "last_name": "Сапаров", "first_name": "Султан", "second_name": "Таалайбекович", "repo": "https://bitbucket.org/sultansaparov/prog1js",	"c9": "https://ide.c9.io/sultansaparov/js1-cloned",	"email":	"sultan.saparov1998@gmail.com"},
+"astepanov":	
+	{"password": "sZZgf", "variant": "22", "last_name": "Степанов", "first_name": "Айсиэн", "second_name": "Виссарионович", "repo": "https://bitbucket.org/Lolling/prog1js",	"c9": "https://ide.c9.io/lolling/js1-cloned",	"email":	"stepanovice14@gmail.com"},
+"ostepanov":	
+	{"password": "2dVAs", "variant": "23", "last_name": "Степанов", "first_name": "Олег", "second_name": "Олегович", "repo": "https://bitbucket.org/stepanov99/prog1js",	"c9": "https://ide.c9.io/stepanov99/js1-cloned",	"email":	"tinkbot24@gmail.com"},
+"tudupov":	
+	{"password": "mbkHs", "variant": "24", "last_name": "Тудупов", "first_name": "Дугар", "second_name": "Юрьевич", "repo": "https://bitbucket.org/DugarTudupov/prog1js",	"c9": "https://ide.c9.io/creedtd/js1-cloned",	"email":	"CreedDT@gmail.com"},
+"khristoforov":	
+	{"password": "rce7q", "variant": "25", "last_name": "Христофоров", "first_name": "Виктор", "second_name": "Владимирович", "repo": "https://bitbucket.org/swgshg/prog1js",	"c9": "https://ide.c9.io/swgshg/js1-cloned",	"email":	"shaggywizard97@gmail.com"}
+}

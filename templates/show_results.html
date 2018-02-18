@@ -1,0 +1,43 @@
+{% extends 'guest_base.html' %}
+{% block title %}Результаты{% endblock %}
+{% block caption %}{{ settings.title }}{% endblock %}
+{% block content %}
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Логин</th>
+            <th>Улус</th>
+            <th>Участник</th>
+            {% for task in tasks.keys() %}
+            <th width="50">{{ task }}</th>
+            {% endfor %}
+            <!--th width="58">Задачи</th>
+            <th width="58">Время</th-->
+            <th width="58">Всего</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            {% for col in columns %}
+                {% if col=='tasks' %}
+                    {% for task in tasks.keys() %}
+                        {% if cells[row['user']][task] and cells[row['user']][task]['attempts'] > 0 %}
+            <td>
+                {#<tt>{% if cells[row['user']][task]['accepted'] %}+{% else %}-{% endif %}{% if cells[row['user']][task]['attempts_before_accept'] %}{{ cells[row['user']][task]['attempts_before_accept'] }}{% endif %}{% if cells[row['user']][task]['accept_time'] %}<br>{{ cells[row['user']][task]['accept_hours_mins'] }}{% endif %}</tt>#}
+                {{ cells[row['user']][task]['maximum_points'] }}
+            </td>
+                        {% else %}
+            <td><tt>.</tt></td>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+            <td>{{ row[col] }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

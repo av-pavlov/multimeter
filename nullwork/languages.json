@@ -1,0 +1,50 @@
+{
+		"delphi7": {
+			"compilation_commands": ["dcc32 %1.dpr"],
+			"execution_command": "{}.exe",
+			"extension": "dpr",
+			"name": "Borland Delphi 7"
+		},
+		"free_pascal": {
+			"compilation_commands": ["\"c:\\FPC\\2.6.4\\bin\\i386-win32\\fpc.exe\" %1.pas"],
+			"execution_command": "{}.exe",
+			"extension": "pas",
+			"name": "Free Pascal 2.6.4"
+		},
+		"visual_cpp": {
+			"compilation_commands": ["call \"c:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\vcvarsall.bat\"", "cl /O2 %1.cpp"],
+			"execution_command": "{}.exe",
+			"extension": "cpp",
+			"name": "Microsoft Visual C++ 2010"
+		},
+		"visual_cs": {
+			"compilation_commands": ["call \"c:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\vcvarsall.bat\"", "csc %1.cs"],
+			"execution_command": "{}.exe",
+			"extension": "cs",
+			"name": "Microsoft Visual C# 2010"
+		},
+		"visual_vb": {
+			"compilation_commands": ["call \"c:\\Program Files\\Microsoft Visual Studio 9.0\\VC\\vcvarsall.bat\"", "vbc %1.vb"],
+			"execution_command": "{}.exe",
+			"extension": "vb",
+			"name": "Microsoft Visual Basic 2010"
+		},
+		"gcc": {
+			"compilation_commands": ["\"c:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe\" %1.cpp -o %1.exe"],
+			"execution_command": "{}.exe",
+			"extension": "cpp",
+			"name": "GCC C++ 4.8"
+		},
+		"python": {
+			"compilation_commands": [""],
+			"execution_command": "\"c:\\Python34\\python.exe\" {}.py",
+			"extension": "py",
+			"name": "Python 3.4"
+		},
+		"java": {
+			"compilation_commands": ["\"c:\\Program Files\\Java\\jdk1.8.0_31\\bin\\javac.exe\" %1.java"],
+			"execution_command": "\"c:\\Program Files\\Java\\jdk1.8.0_31\\bin\\java.exe\" Main",
+			"extension": "java",
+			"name": "Oracle Java 8"
+		}
+  }

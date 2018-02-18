@@ -1,0 +1,19 @@
+{
+	"name": "switch с цифрами",
+	"timeout": 2.0,
+	"time_limit": 1.0,
+	"memory_limit": 64.0,
+	"input_file": "input.txt",
+	"output_file": "output.txt",
+	"preliminary": [
+	],
+	"test_suites": {
+		"subtask1": {
+			"name": "Подзадача 1",
+			"scoring": "entire",
+			"total_score": 100,
+			"results": "full"
+		}
+
+	}
+}

@@ -1,0 +1,139 @@
+{% extends 'admin_base.html' %}
+{% block title %}{% if code %}Редактирование задания{% else %}Новое задание{% endif %}{% endblock %}
+{% block caption %}{% if code %}Редактирование задания{% else %}Новое задание{% endif %}{% endblock %}
+{% block content %}
+    {% for error in errors %}
+        <p class="alert alert-warning">{{ error }}</p>
+    {% endfor %}
+    <form role="form" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="code">Код задания</label>
+            <input id="code" name="code" type="text" class="form-control" value="{{ code }}">
+        </div>
+        <div class="form-group">
+            <label for="brief_name">Краткое наименование</label>
+            <input id="brief_name" name="brief_name" type="text" class="form-control" value="{{ data.brief_name }}">
+        </div>
+        <div class="form-group">
+            <label for="name">Наименование задания</label>
+            <input id="name" name="name" type="text" class="form-control" value="{{ data.name }}">
+        </div>
+        <div class="form-group">
+            <label for="input_file">Входной файл</label>
+            <input id="input_file" name="input_file" type="text" class="form-control" value="{{ data.input_file }}">
+        </div>
+        <div class="form-group">
+            <label for="output_file">Выходной файл</label>
+            <input id="output_file" name="output_file" type="text" class="form-control" value="{{ data.output_file }}">
+        </div>
+        <div class="form-group">
+            <label for="timeout">Выходной файл</label>
+            <input id="timeout" name="timeout" type="text" class="form-control" value="{{ data.timeout }}">
+        </div>
+        <div class="form-group">
+            <label for="text">Текст задания</label>
+            <textarea id="text" name='text' class="form-control" >{{ data.statement|safe }}</textarea>
+        </div>
+        <div id="test_suites" class="form-group">
+            <label for="subtasks">Подзадачи</label>
+            <table id="subtasks" class="table">
+                <thead>
+                    <tr>
+                        <th class="col-sm-3">Код</th>
+                        <th class="col-sm-3">Начисление баллов</th>
+                        <th class="col-sm-3">Отображение результатов</th>
+                        <th class="col-sm-2">Кол-во баллов</th>
+                        <th class="col-sm-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for k, v in data['test_suites'].items() %}
+                        <tr data-subtask="{{ k }}">
+                            <td><input class="form-control" name="subtask_{{ k }}" value="{{ k }}"></td>
+                            <td>
+                                <select class="form-control" id="{{ v.scoring }}" name="{{ v.scoring }}">
+                                    <option value="partial"{% if v.scoring == "partial" %} selected{% endif %}>Каждый тест отдельно</option>
+                                    <option value="entire"{% if v.scoring == "entire" %} selected{% endif %}>Подзадача целиком</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" id="{{ v.results }}" name="{{ v.results }}">
+                                    <option value="full"{% if v.results == "full" %} selected{% endif %}>Результат каждого теста</option>
+                                    <option value="brief"{% if v.results == "brief" %} selected{% endif %}>Общий балл</option>
+                                </select>
+                            <td><input class="form-control" id="{{ v.score }}" name="{{ v.score }}" value="{{ v.score }}"></td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#remove-subtask" data-subtask="{{ k }}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Сохранить">
+        <button type="button" class="btn btn-default" id="add_subtask">Добавить подзадачу</button>
+        <a class="btn btn-default" href="{{ url_for('admin.admin_tasks') }}">Отменить</a>
+    </form>
+    <div class="modal" id="remove-subtask" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрыть</span></button>
+                    <h4 class="modal-title">Удаление подзадачи</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="remove-subtask-button">Да</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Нет</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('text');
+
+        $('#remove-subtask').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var subtask = button.data('subtask');
+            var modal = $(this);
+            modal.find('.modal-body').html('<p>Вы действительно хотите удалить подзадачу ' + subtask) + '?</p>');
+            $('#remove-subtask-button').attr('data-subtask', subtask);
+        })
+
+        $('#remove-subtask-button').on('click', function(event) {
+            var subtask = this.getAttribute('data-subtask');
+            var row = $('#subtasks tr[data-subtask="' + subtask + '"]');
+            row.remove();
+        });
+
+        $('#add_subtask').on('click', function(event) {
+            $('#subtasks tbody').add('\
+            <tr data-subtask="">\
+                <td><input class="form-control" name="subtask_" value=""></td>
+                <td>\
+                    <select class="form-control" name="{ v.scoring }">\
+                        <option value="partial">Каждый тест отдельно</option>\
+                        <option value="entire">Подзадача целиком</option>\
+                    </select>\
+                </td>\
+                <td>\
+                    <select class="form-control" id="{ v.results }" name="{ v.results }">\
+                        <option value="full">Результат каждого теста</option>\
+                        <option value="brief">Общий балл</option>\
+                    </select>\
+                <td><input class="form-control" id="{ v.score }" name="{ v.score }" value="{ v.score }"></td>\
+                <td>\
+                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#remove-subtask" data-subtask="{ k }">\
+                        <span class="glyphicon glyphicon-remove"></span>\
+                    </button>\
+                </td>\
+            </tr>');
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,1 @@
+c:\python35\scripts\py3babel.exe compile -d translations

@@ -1,0 +1,21 @@
+{
+	"password": "299792458",
+	"registration_enabled": false,
+	"show_results": false,
+	"summary": "hide",
+	"testing": "started",
+	"title": "Олимпиада ???",
+	"users_attributes": {
+		"first_name": {
+			"required": true,
+			"title": "Имя",
+			"type": "str"
+		},
+		"last_name": {
+			"required": true,
+			"title": "Фамилия",
+			"type": "str"
+		}
+	},
+	"end_time": "2020-01-01T00:00:00"
+}

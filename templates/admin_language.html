@@ -1,0 +1,35 @@
+{% extends 'admin_base.html' %}
+{% block title %}{% if data %}Редактирование языка программирования{% else %}Новый язык программирования{% endif %}{% endblock %}
+{% block caption %}{% if data %}Редактирование языка программирования{% else %}Новый язык программирования{% endif %}{% endblock %}
+{% block content %}
+    {% for error in errors %}
+        <p class="alert alert-warning">{{ error }}</p>
+    {% endfor %}
+    <form role="form" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="code">Код</label>
+            <input id="code" name="code" type="text" class="form-control" value="{{ code }}">
+        </div>
+        <div class="form-group">
+            <label for="name">Наименование</label>
+            <input id="name" name="name" type="text" class="form-control" value="{{ data.name }}">
+        </div>
+        <div class="form-group">
+            <label for="extension">Расширение</label>
+            <input id="extension" name="extension" type="text" class="form-control" value="{{ data.extension }}">
+        </div>
+        <div class="form-group">
+            <label for="execution">Команда выполнения</label>
+            <input id="execution" name="execution" type="text" class="form-control" value="{{ data.execution }}">
+        </div>
+        <div class="form-group">
+            <label for="compilation">Команды компиляции</label>
+            <textarea id="compilation" name="compilation" class="form-control">{% for line in data.compilation %}
+{{ line }}{% endfor %}</textarea>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Сохранить">
+        <a class="btn btn-default" href="{{ url_for('admin.admin_languages') }}">Отменить</a>
+    </form>
+{% endblock %}
+{% block scripts %}{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Результат тестирования{% endblock %}
+{% block caption %}Результат тестирования{% endblock %}
+{% block content %}
+<h3>{{ tasks[code].name }}, Попытка №{{ attempt }}</h3>
+{% for key, value in results.results.items()|sort %}
+<p><strong>{{ tasks[code].test_suites[key].name }}:</strong></p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Тест</th>
+            <th>Результат</th>
+        </tr>
+    </thead>
+    {% if tasks[code]['test_suites'][key]['results'] == 'error' %}
+    <tbody>
+        {% for tn, res in value.items() if res != 'OK' %}
+            {% if loop.first %}
+            <tr>
+                <td>{{ tn }}</td>
+                <td>{{ res }}</td>
+            </tr>
+            {% endif %}
+        {% else %}
+        <thead>
+            <tr>
+                <th>Сумма</th>
+                <th>{{ totals[key] }}</th>
+            </tr>
+        </thead>
+        {% endfor %}
+    </tbody>
+    {% else %}
+        {% if tasks[code]['test_suites'][key]['results'] == 'full' %}
+        <tbody>
+            {% for tn, res in value.items() %}
+            <tr>
+                <td>{{ tn }}</td>
+                <td>{{ res }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% endif %}
+        <thead>
+            <tr>
+                <th>Сумма</th>
+                <th>{{ totals[key] }}</th>
+            </tr>
+        </thead>
+    {% endif %}
+</table>
+{% endfor %}
+<p><strong>Всего баллов: {{ total }}</strong></p>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends 'admin_base.html' %}
+{% block title %}Конфигурация системы{% endblock %}
+{% block caption %}Конфигурация системы{% endblock %}
+{% block content %}
+<div class="panel panel-default hide">
+	<div class="panel-body">
+        <strong>Адреса сервера:</strong>
+        {% for address in addresses %}
+        <p><tt><a href="http://{{ address[0] }}{% if address[1] != 80 %}:{{ address[1] }}{% endif %}/">
+            http://{{ address[0] }}{% if address[1] != 80 %}:{{ address[1] }}{% endif %}/
+        </a></tt></p>
+        {% endfor %}
+	</div>
+</div>
+
+{% if message %}<div class="alert alert-warning">{{ message }}</div>{% endif %}
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+				<label for="title">Заголовок системы:</label>
+				<input id="title" name="title" type="text" class="form-control" value="{{ settings['title'] }}">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+				<label for="statement_file">Файл с условиями:</label>
+				<input id="statement_file" name="statement_file" type="text" class="form-control" value="{{ settings['statement_file'] }}">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+				<label for="password">Пароль администратора:</label>
+				<input id="password" name="password" type="text" class="form-control" value="{{ settings['password'] }}">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+				<label for="start_time">Время начала:</label>
+				<input id="start_time" name="start_time" type="text" class="form-control" value="{{ settings['start_time'] }}">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+				<label for="freeze_time">Время "заморозки" таблицы результатов:</label>
+				<input id="freeze_time" name="freeze_time" type="text" class="form-control" value="{{ settings['freeze_time'] }}">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+				<label for="end_time">Время завершения:</label>
+				<input id="end_time" name="end_time" type="text" class="form-control" value="{{ settings['end_time'] }}">
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<label>Регистрация:</label>
+			<div class="radio">
+				<label>
+					<input type="radio" name="registration" value="enabled" {% if settings.registration_enabled %}checked{% endif %}>включена
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="registration" value="disabled" {% if not settings.registration_enabled %}checked{% endif %}>отключена
+				</label>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<label>Результаты тестирования:</label>
+			<div class="radio">
+				<label>
+					<input type="radio" name="show_results" value="show" {% if settings.show_results %}checked{% endif %}>показывать
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="show_results" value="hide" {% if not settings.show_results %}checked{% endif %}>скрывать
+				</label>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default hidden">
+	<div class="panel-body">
+		<form role="form" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+			<label>Тестирование:</label>
+			<div class="radio">
+				<label>
+					<input type="radio" name="testing" value="started" {% if settings.testing == 'started' %}checked{% endif %}>выполняется
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="testing" value="stopped" {% if settings.testing != 'started' %}checked{% endif %}>остановлено
+				</label>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Сохранить">
+			<a class="btn btn-default" href="{{ url_for('admin.admin_index') }}">Отменить</a>
+		</form>
+	</div>
+</div>
+{% endblock %}

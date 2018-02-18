@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>{{ task.full_name }}</h3>
+    {{ task.statement|safe }}
+    {% if now > settings.start_time %}
+        <hr>
+        {% if count < 40 %}
+            <form method='post' action="{{ url_for('multimeter.task_submission', code=code) }}" role='form'
+                  enctype='multipart/form-data'>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <label for="language">Компилятор:</label>
+                    <select name="language" id="language" class="form-control">
+                        {% for code in languages %}
+                            <option value="{{ code }}"
+                                    {% if session.last_language==code %}selected{% endif %}>{{ languages[code].name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="file">Решение:</label>
+                    <input type="file" name="file" id="file" class="hidden">
+                    <button class='btn btn-default' id='choose_button' type='button'>Выберите файл</button>
+                    <span id='filename'></span>
+                    <input class='btn btn-primary hidden' id='submit_button' type='submit' value="Отправить файл">
+                </div>
+            </form>
+            <hr>
+        {% else %}
+            <strong>Достигнуто предельное число попыток решения задачи</strong>
+            <hr>
+        {% endif %}
+        <div>
+            <strong>Проверено: </strong>{{ count }}
+            {% if count%10 == 1 and count != 11 %}
+                решение
+            {% elif count%10 in [2, 3, 4] and count not in [12, 13, 14] %}
+                решения
+            {% else %}
+                решений
+            {% endif %}
+        </div>
+        <hr>
+    {% else %}
+        <p>Тур ещё не начался!</p>
+        <hr>
+    {% endif %}
+    <table class="table table-bordered" id="results">
+        <thead>
+        <tr>
+            <th>Попытка</th>
+            <th>Компиляция</th>
+            <th>Примеры</th>
+            <th>Тесты</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for r in results %}
+            <tr>
+                <td>{{ r.attempt }}</td>
+                {% if r.compilation %}
+                <td>
+                    {{ r.compilation }}
+                </td>
+                <td>
+                    {% for test, result in r.preliminary.items() %}
+                    {{ test }}: <b>{{ result }}</b>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% if r.results %}
+                    <a href="{{ url_for('multimeter.task_results', code=code, attempt=r.attempt) }}">Результаты</a>
+                    {% endif %}
+                </td>
+                {% else %}
+                <td colspan="3">
+                    Выполняется проверка...
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script>
+    $('#choose_button').click(function(){
+        $('#file').trigger('click');
+    });
+    $('#file').change(function(e){
+        var filename = this.value;
+        var lastIndex = filename.lastIndexOf("\\");
+        if (lastIndex >= 0) {
+            filename = filename.substring(lastIndex + 1);
+        }
+        $('#filename').html(filename);
+        $('#submit_button').removeClass('hidden');
+    });
+    $(function () {
+        setTimeout(function () {
+            window.location.reload();
+        }, 60 * 1000);
+    });
+</script>
+{% endblock %}

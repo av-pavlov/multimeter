@@ -1,0 +1,120 @@
+{
+	"VisualCppLang": {
+		"extension": "cpp",
+		"execution": "{solution}.exe",
+		"name": "MS Visual C++ 2017",
+		"prepare": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\VsDevCmd.bat",
+		"compiler": "cl.exe",
+		"compilation": [
+			"pushd .",
+			"call \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\VsDevCmd.bat\"",
+			"popd",
+			"cl.exe /O2 %1.cpp"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\VisualCppLang.bat",
+		"version": "15.0"
+	},
+	"PascalABCLang": {
+		"extension": "pas",
+		"execution": "{solution}.exe",
+		"name": "PascalABC.NET",
+		"compiler": "C:\\Olymp\\Multimeter\\langs\\PABC\\pabcnetcclear.exe",
+		"compilation": [
+			"\"C:\\Olymp\\Multimeter\\langs\\PABC\\pabcnetcclear.exe\" %1.pas"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\PascalABCLang.bat"
+	},
+	"Python2Lang": {
+		"extension": "py",
+		"execution": "C:\\Python27\\python.exe {solution}.py",
+		"name": "Python 2.7",
+		"interpreter": "C:\\Python27\\python.exe",
+		"compilation": [
+			"@echo Compilation %1.py"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\Python2Lang.bat",
+		"version": "2.7"
+	},
+	"FreePascalLang": {
+		"extension": "pas",
+		"execution": "{solution}.exe",
+		"name": "Free Pascal 3.0.2",
+		"compiler": "C:\\Olymp\\Multimeter\\langs\\FPC\\bin\\fpc.exe",
+		"compilation": [
+			"\"C:\\Olymp\\Multimeter\\langs\\FPC\\bin\\fpc.exe\" -O2 -e\"C:\\Olymp\\Multimeter\\langs\\FPC\\bin\" -Fu\"C:\\Olymp\\Multimeter\\langs\\FPC\\units\\*\" %1.pas"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\FreePascalLang.bat",
+		"version": "3.0.2"
+	},
+	"BorlandDelphi7Lang": {
+		"extension": "dpr",
+		"execution": "{solution}.exe",
+		"name": "Borland Delphi 7",
+		"compiler": "C:\\Olymp\\Multimeter\\langs\\Delphi7\\DCC32.exe",
+		"compilation": [
+			"\"C:\\Olymp\\Multimeter\\langs\\Delphi7\\DCC32.exe\" -l\"C:\\Olymp\\Multimeter\\langs\\Delphi7\" -U\"C:\\Olymp\\Multimeter\\langs\\Delphi7\" %1.dpr"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\BorlandDelphi7Lang.bat"
+	},
+	"GccCppLang": {
+		"extension": "cpp",
+		"execution": "{solution}.exe",
+		"name": "GNU Compiler Collection C++",
+		"compiler": "C:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe",
+		"compilation": [
+			"\"C:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe\" -O2 %1.cpp -o %1"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\GccCppLang.bat"
+	},
+	"GccCppLang11": {
+		"extension": "cpp",
+		"execution": "{solution}.exe",
+		"name": "GNU Compiler Collection C++11",
+		"compiler": "C:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe",
+		"compilation": [
+			"\"C:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe\" -O2 %1.cpp -o %1 -std=c++11"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\GccCppLang11.bat"
+	},
+	"VisualBasicLang": {
+		"extension": "vb",
+		"execution": "{solution}.exe",
+		"name": "MS Visual Basic 2017",
+		"prepare": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\VsMSBuildCmd.bat",
+		"compiler": "vbc.exe",
+		"compilation": [
+			"pushd .",
+			"call \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\VsMSBuildCmd.bat\"",
+			"popd",
+			"vbc.exe %1.vb"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\VisualBasicLang.bat",
+		"version": "15.0"
+	},
+	"Python3Lang": {
+		"extension": "py",
+		"execution": "C:\\Program Files (x86)\\Python36-32\\python.exe -E {solution}.py",
+		"name": "Python 3.6",
+		"interpreter": "C:\\Program Files (x86)\\Python36-32\\python.exe",
+		"compilation": [
+			"@echo Compilation %1.py"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\Python3Lang.bat",
+		"version": "3.6"
+	},
+	"VisualCSharpLang": {
+		"extension": "cs",
+		"execution": "{solution}.exe",
+		"name": "MS Visual C# 2017",
+		"prepare": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\VsMSBuildCmd.bat",
+		"compiler": "csc.exe",
+		"compilation": [
+			"pushd .",
+			"call \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\VsMSBuildCmd.bat\"",
+			"popd",
+			"csc.exe -optimize %1.cs"
+		],
+		"batch": "c:\\Olymp\\Multimeter\\re18_junior1\\.languages\\VisualCSharpLang.bat",
+		"version": "15.0"
+	}
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Результаты{% endblock %}
+{% block caption %}Результаты{% endblock %}
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ФИО</th>
+            {% for code in tasks.keys() %}
+            <th width="50">{{ code }}</th>
+            {% endfor %}
+            <th width="58">Итог</th>
+            <th width="58">Место</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in ratings %}
+        <tr>
+            <td>{{ results[row.user].name }}</td>
+            {% for code in tasks.keys() %}
+            <td>{{ results[row.user][code] }}</td>
+            {% endfor %}
+            <td><b>{{ row.total }}</b></td>
+            <td><b>{{ cups[row.total] }}</b></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

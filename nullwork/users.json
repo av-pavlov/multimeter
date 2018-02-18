@@ -1,0 +1,12 @@
+{
+	"test": {
+		"first_name": "Тестовый",
+		"last_name": "Пользователь",
+		"password": "1"
+	},
+	"user1": {
+		"first_name": "Пользователь",
+		"password": "1",
+		"last_name": "НомерОдин"
+	}
+}

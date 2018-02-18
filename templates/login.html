@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Авторизация{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+        <h1>Авторизация</h1>
+        {% for error in errors %}
+            <p class="alert alert-warning">{{ error }}</p>
+        {% endfor %}
+        <form method="post" role="form">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <label for="username">Логин</label>
+                <input id="username" name="username" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input id="password" name="password" type="password" class="form-control">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Войти">
+            <a class="btn btn-default{% if not settings.registration_enabled %} hidden {% endif %}" href="{{ url_for('multimeter.register') }}">Регистрация</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

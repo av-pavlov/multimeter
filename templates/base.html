@@ -1,0 +1,88 @@
+{% macro render_menu_item(path, label) %}
+<li {% if request.path == path %}class="active"{% endif %}>
+    <a href="{{ path }}">{{ label }}</a>
+</li>
+{% endmacro %}
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ settings.title }}{% endblock %}</title>
+    <link href="{{ url_for('static', filename='favicon.ico') }}" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prettify.css') }}">
+</head>
+<body>
+    <div class="container" style="width: 940px !important;">
+        {% block body %}
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>{% block caption %}{{ settings.title|safe }}{% endblock %}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-9">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-xs-3">
+                <nav class="navbar navbar-default" role="navigation">
+                    <ul class="nav nav-pills nav-stacked">
+                        {{ render_menu_item(url_for('multimeter.index'), "Главная") }}
+                        {% for key in tasks.keys() %}
+                        <li {% if code == key %}class="active"{% endif %}>
+                            <a href="{{ url_for('multimeter.task_view', code=key) }}">{{ tasks[key].brief_name }}</a>
+                        </li>
+                        {% endfor %}
+                        {% if settings['statement_file'] %}{% if now > settings.start_time %}
+                        {{ render_menu_item(url_for('multimeter.statement'), "Скачать условия") }}
+                        {% endif %}{% endif %}
+                        {% if settings['show_results'] %}
+                        {{ render_menu_item(url_for('multimeter.get_total_results'), "Результаты") }}
+                        {% endif %}
+                        {{ render_menu_item(url_for('multimeter.logout'), "Выход") }}
+                    </ul>
+                </nav>
+                <p>{{ 'Осталось времени' }}: <span id="timeleft">---</span></p>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script>
+
+    // transforms time in seconds into [x days] HH:MM
+    function transformSec(t, showSeconds) {
+        if (t <= 0) return '--';
+        var d = Math.floor(t / (60*60*24));
+        return (d > 0 ? d + 'д ' : '') +
+            new Date(t * 1000).toISOString().substr(11, showSeconds ? 8 : 5 );
+    }
+
+    // refreshes "time left:" display, called every minute or every second
+    function tickTimeLeft(){
+        document.getElementById('timeleft').innerHTML = transformSec(SecLeft, secondsLeftUpdater);
+        if (secondsLeftUpdater) {
+            SecLeft--;
+        } else {
+            SecLeft -= 60;
+            if (SecLeft < 5 * 60) { // switch to updating every sec
+                SecLeft += 59
+                clearInterval(minutesLeftUpdater);
+                secondsLeftUpdater = setInterval(tickTimeLeft, 1000);
+            }
+        }
+    }
+
+    // Seconds until finish from the server
+    var SecLeft = {{ time_left }};
+
+    // assign ticker functions
+    var secondsLeftUpdater = null;
+    var minutesLeftUpdater = setInterval(tickTimeLeft, 60000);
+    tickTimeLeft();
+
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

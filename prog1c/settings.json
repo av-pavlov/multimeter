@@ -1,0 +1,51 @@
+{
+	"summary": "hide",
+	"submit_textarea": true,
+	"statement_file": "L02if.pdf",
+	"show_results": false,
+	"password": "299792458",
+	"testing": "started",
+	"results_format": "individual",
+	"registration_enabled": false,
+	"end_time": "2018-06-29T18:40:00",
+	"users_attributes": {
+		"first_name": {
+			"required": true,
+			"title": "Имя",
+			"type": "str"
+		},
+		"second_name": {
+			"required": true,
+			"title": "Отчество",
+			"type": "str"
+		},
+		"last_name": {
+			"required": true,
+			"title": "Фамилия",
+			"type": "str"
+		},
+		"variant": {
+			"required": true,
+			"title": "Вариант",
+			"type": "int"
+		},
+		"repo": {
+			"required": true,
+			"title": "Адрес репозитория",
+			"type": "str"
+		},
+		"c9": {
+			"required": true,
+			"title": "Адрес рабочего пространства c9",
+			"type": "str"
+		},
+		"email": {
+			"required": true,
+			"title": "Email",
+			"type": "str"
+		}
+	},
+	"freeze_time": "2101-01-01T00:00:00",
+	"title": "Программирование ИВТ-17<br>ЛР2",
+	"start_time": "2018-01-27T13:30:00"
+}
