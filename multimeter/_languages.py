@@ -5,12 +5,13 @@
 Languages - контейнер для языков программирования. В отличие от dict он умеет работать с конфигурационным файлом. Кроме
     того, обход элеменов осуществляется с учетом сортировки по представлению языка программирования.
 Language - базовый класс для языков программирования
-Классы-наследнки Language - классы конкретного языка программирования. Конструктор каждого такого класса должен уметь
+Классы-наследники Language - классы конкретного языка программирования. Конструктор каждого такого класса должен уметь
     определять местонахождение компилятора и/или интерпретатора. Наименование каждого такого класса должно заканчиваться
     на суффикс Lang
 """
 import os
 import subprocess
+import logging
 from abc import ABCMeta, abstractmethod
 from ctypes import CDLL, c_char_p, c_uint, byref
 from os.path import isdir, isfile, join
@@ -31,6 +32,9 @@ class Languages:
         self.filename = join(work_dir, 'languages.json')
 
         if work_dir:
+            if not isdir(work_dir):
+                logging.error("Work dir {} not found!".format(work_dir))
+                sys.exit(os.errno.ENOTDIR)
             self.load(work_dir)
 
     def load(self, work_dir):

@@ -1,7 +1,8 @@
 from datetime import datetime
+from os.path import join
+import logging
 
 from flask import Blueprint, session, redirect, request, url_for, render_template, abort
-from os.path import join
 
 from multimeter import login_required, users, tasks, settings, results, languages, save_json
 
@@ -24,15 +25,19 @@ def login():
         if not errors:
             if username in users and users[username]['password'] == password:
                 session['username'] = username
+                logging.info("{} - - User {} logged in".format(request.remote_addr, username))
                 return redirect(request.form.get('next', url_for('multimeter.index')))
             errors.append('Неправильный логин или пароль')
+            logging.info("{} - - Login ERROR for user {}".format(request.remote_addr, username))
     return render_template('login.html', errors=errors)
 
 
 @user_bp.route('/logout/')
 def logout():
     """ Выход из системы """
+    username = session.get('username')
     session.pop('username', None)
+    if username: logging.info("{} - - User {} logged out".format(request.remote_addr, username))
     return redirect(url_for('multimeter.login'))
 
 

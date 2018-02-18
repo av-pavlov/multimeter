@@ -14,12 +14,14 @@ ISO_DATETIME = '%Y-%m-%dT%H:%M:%S'
 FAR_FUTURE = '2100-01-01T00:00:00'
 
 
-def log_setup(work_dir):
+def log_setup(work_dir, filename="arbiter.log"):
     try:
-        time_fmt = logging.Formatter("%(asctime)s [%(filename)s:%(lineno)s:%(funcName)s()]: %(message)s")
+        time_fmt = logging.Formatter(
+            "%(asctime)s [%(filename)s:%(lineno)s:%(funcName)s()]: %(message)s" if filename=="arbiter" else
+            "%(asctime)s %(message)s")
         time_fmt.default_msec_format = "%s.%.01s"
 
-        log_file = logging.FileHandler(work_dir + "/arbiter.log")
+        log_file = logging.FileHandler(join(work_dir, filename))
         log_file.setFormatter(time_fmt)
         log_cout = logging.StreamHandler()
         log_cout.setLevel(logging.INFO)
@@ -27,7 +29,7 @@ def log_setup(work_dir):
         logging.basicConfig(level=logging.DEBUG, format='%(message)s', handlers=(log_cout, log_file))
 
     except OSError:
-        print("Error: CANNOT OPEN LOG FILE: {}/arbiter.log".format(work_dir))
+        print("Error: CANNOT OPEN LOG FILE: {}/{}".format(work_dir, filename))
 
 
 def check_or_create_dir(directory_name):
