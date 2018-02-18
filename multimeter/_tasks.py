@@ -4,6 +4,7 @@ import subprocess
 from collections import OrderedDict
 from os import listdir, stat
 from os.path import isdir, join, isfile
+from collections import OrderedDict
 
 from .helpers import load_json, save_json, validate_code, check_or_create_dir, load_tests
 
@@ -14,7 +15,7 @@ class Tasks:
     def __init__(self, settings, languages):
         self._settings = settings
         self._languages = languages
-        self.tasks = dict()
+        self.tasks = OrderedDict()
         self.load()
 
     def __len__(self):
@@ -45,7 +46,8 @@ class Tasks:
         """ Загрузить олимпиадные задачи из подкаталогов рабочего каталога """
 
         # Просмотрим подкаталоги рабочего каталога
-        for name in listdir(self._settings.work_dir):
+        dirs = sorted(listdir(self._settings.work_dir))
+        for name in dirs:
             path = join(self._settings.work_dir, name)
             if isdir(path) and '.' not in path:
                 try:
