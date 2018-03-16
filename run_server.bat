@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
-@title Server Malgaraeva Aigul
+@title Server Malgaraeva Aigul!
 =======
 @title SERGEEV
 >>>>>>> 15aa4f58ac528f8e64a017fd17f54ea34034c5d0
