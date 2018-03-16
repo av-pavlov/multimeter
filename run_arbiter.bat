@@ -1,3 +1,3 @@
 @title Arbiter
-python\python arbiter.py %*
+py -3 arbiter.py -w prog1c %*
 @pause
